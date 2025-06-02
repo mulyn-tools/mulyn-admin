@@ -1,5 +1,7 @@
 interface ImportMetaEnv {
   // Auto generate by env-parse
+  readonly VITE_BACKEND_URL: string
+  readonly VITE_SECRET: string
   /**
    * 应用配置面板
    */
