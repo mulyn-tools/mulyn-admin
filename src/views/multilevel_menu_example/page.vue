@@ -4,12 +4,6 @@ meta:
 </route>
 
 <script lang="ts" setup>
-interface PlayEntry {
-  name: string
-  author: string
-  note?: string
-}
-
 const tableData = ref([])
 fetch(`${import.meta.env.VITE_BACKEND_URL}/playlist`).then(resp => resp.json()).then(json => {
   tableData.value = json
@@ -18,7 +12,7 @@ const newSongName = ref('')
 const newAuthor = ref('')
 const note = ref('')
 
-function handleDelete(index: number, row: PlayEntry) {
+function handleDelete(index: number) {
   tableData.value.splice(index, 1)
   fetch(`${import.meta.env.VITE_BACKEND_URL}/edit`, {
     method: "POST",
@@ -75,7 +69,7 @@ function handleAdd(name: string, author: string, note?: string) {
             <el-button
               size="small"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)"
+              @click="handleDelete(scope.$index)"
             >
               删除
             </el-button>
