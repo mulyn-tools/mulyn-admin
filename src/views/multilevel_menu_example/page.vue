@@ -25,7 +25,17 @@ function handleDelete(index: number) {
 }
 
 function handleAdd(name: string, author: string, note?: string) {
-  console.log(name, author, note)
+  tableData.value.push({
+    name, author, note
+  })
+  fetch(`${import.meta.env.VITE_BACKEND_URL}/edit`, {
+    method: "POST",
+    body: JSON.stringify(tableData.value),
+    headers: {
+      "Content-Type": "application/json",
+      "secret": import.meta.env.VITE_SECRET
+    }
+  })
 }
 </script>
 
