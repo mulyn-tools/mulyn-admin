@@ -5,8 +5,8 @@ export default {
   login: (data: {
     account: string
     password: string
-  }) => api.post('user/login', data, {
-    baseURL: '/mock/',
+  }) => api.post('login', data, {
+    baseURL: import.meta.env.VITE_BACKEND_URL,
   }),
 
   // 获取权限
