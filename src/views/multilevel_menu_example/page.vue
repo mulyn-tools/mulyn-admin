@@ -4,7 +4,13 @@ meta:
 </route>
 
 <script lang="ts" setup>
-const tableData = ref([])
+interface PlayEntry {
+  name: string
+  author: string
+  note?: string
+}
+
+const tableData: Ref<PlayEntry[]> = ref([])
 fetch(`${import.meta.env.VITE_BACKEND_URL}/playlist`).then(resp => resp.json()).then(json => {
   tableData.value = json
 })
