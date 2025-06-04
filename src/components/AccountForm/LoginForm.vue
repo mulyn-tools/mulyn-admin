@@ -23,7 +23,6 @@ const userStore = useUserStore()
 
 const title = import.meta.env.VITE_APP_TITLE
 const loading = ref(false)
-const password = import.meta.env.VITE_ADMIN_PASSWORD
 
 // 登录方式，default 账号密码登录，qrcode 扫码登录
 const type = ref<'default' | 'qrcode'>('default')
